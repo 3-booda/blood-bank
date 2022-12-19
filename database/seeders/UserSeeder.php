@@ -19,7 +19,17 @@ class UserSeeder extends Seeder
         $fake = fake();
         $cities = [];
 
-        for ($i=0; $i < 100; $i++) {
+        User::create([
+            'blood_type_id'=> rand(1, 8),
+            'city_id' => rand(1, 100),
+            'name' => 'Abdulrahman',
+            'email' => 'abdulrahman@gmail.com',
+            'phone' => '01512345678',
+            'password' => bcrypt('123Abdulrahman@'),
+            'birth_date' => $fake->date()
+        ]);
+
+        for ($i=0; $i < 99; $i++) {
             array_push($cities, [
                 'blood_type_id'=> rand(1, 8),
                 'city_id' => rand(1, 100),

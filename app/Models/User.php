@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -19,7 +20,7 @@ class User extends Authenticatable
         'blood_type_id',
         'city_id',
         'last_donation_date',
-        'date_of_birth',
+        'birth_date',
         'phone'
     ];
 
@@ -67,5 +68,16 @@ class User extends Authenticatable
     public function allfavors()
     {
         return $this->query()->select('*')->from('userables')->where('user_id', $this->id)->get();
+    }
+
+
+    // Mutators
+    public function setPasswordAttribute($password)
+    {
+        // $password = $this->attributes['password'];
+
+        if (Hash::needsRehash($password) && !is_null($password)) {
+            $this->attributes['password'] = bcrypt($password);
+        }
     }
 }

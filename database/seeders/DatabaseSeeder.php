@@ -18,6 +18,9 @@ class DatabaseSeeder extends Seeder
         $tables = [
             'admins',
             'users',
+            'personal_access_tokens',
+            'password_resets',
+            'failed_jobs',
             'provinces',
             'cities',
             'blood_types',
