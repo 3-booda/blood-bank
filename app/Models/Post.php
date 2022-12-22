@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class Post extends Model
 {
@@ -14,6 +15,7 @@ class Post extends Model
         'image',
         'content'
     ];
+    protected $appends = ['is_favored_by_user'];
     public $timestamps = true;
 
 
@@ -31,5 +33,17 @@ class Post extends Model
     public function favoredByUsers()
     {
         return $this->morphToMany('App\Models\User', 'userable');
+    }
+
+
+    // Accessorss and Mutators
+    protected function isFavoredByUser(): Attribute
+    {
+        return new Attribute(
+            get: function () {
+                // return ($this->favoredByUsers()->where('user_id', auth()->user()->id))->count();
+                return ($this->favoredByUsers()->where('user_id', auth()->user()?->id))->count();
+            },
+        );
     }
 }

@@ -74,8 +74,6 @@ class User extends Authenticatable
     // Mutators
     public function setPasswordAttribute($password)
     {
-        // $password = $this->attributes['password'];
-
         if (Hash::needsRehash($password) && !is_null($password)) {
             $this->attributes['password'] = bcrypt($password);
         }
