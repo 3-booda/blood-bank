@@ -31,8 +31,8 @@ class UserRequest extends FormRequest
         ];
 
         if (Route::current()->getActionMethod() === 'register') {
-            array_push($rules['phone'], ['unique:users,phone']);
-            array_push($rules['password'], ['confirmed']);
+            array_push($rules['phone'], 'unique:users,phone');
+            array_push($rules['password'], 'confirmed');
             $rules += [
                 'name' => ['required', 'string', 'max:255'],
                 'email' => ['required', 'email', 'unique:users,email', 'max:255'],
