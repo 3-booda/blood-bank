@@ -41,7 +41,6 @@ class Post extends Model
     {
         return new Attribute(
             get: function () {
-                // return ($this->favoredByUsers()->where('user_id', auth()->user()->id))->count();
                 return ($this->favoredByUsers()->where('user_id', auth()->user()?->id))->count();
             },
         );

@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class User extends Authenticatable
 {
@@ -71,11 +72,15 @@ class User extends Authenticatable
     }
 
 
-    // Mutators
-    public function setPasswordAttribute($password)
+    // Accessorss & Mutators
+    protected function password(): Attribute
     {
-        if (Hash::needsRehash($password) && !is_null($password)) {
-            $this->attributes['password'] = bcrypt($password);
-        }
+        return Attribute::make(
+            set: function ($password) {
+                if (Hash::needsRehash($password) && !is_null($password)) {
+                    return bcrypt($password);
+                }
+            }
+        );
     }
 }
