@@ -27,13 +27,12 @@ class UserRequest extends FormRequest
     {
         $rules = [
             'phone' => ['required', 'string'],
-            // 'password' => ['required', Password::defaults()],
-            'password' => ['nullable']
+            'password' => ['required', Password::defaults()],
         ];
 
         if (Route::current()->getActionMethod() === 'register') {
             array_push($rules['phone'], 'unique:users,phone');
-            // array_push($rules['password'], 'confirmed');
+            array_push($rules['password'], 'confirmed');
             $rules += [
                 'name' => ['required', 'string', 'max:255'],
                 'email' => ['required', 'email', 'unique:users,email', 'max:255'],
