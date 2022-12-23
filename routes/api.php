@@ -2,6 +2,10 @@
 
 use App\Http\Controllers\Api\Auth\AuthController;
 use App\Http\Controllers\Api\PostController;
+use App\Mail\ResetPassword;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Route;
 
 
@@ -9,9 +13,13 @@ use Illuminate\Support\Facades\Route;
 define('PAGINATE', 10);
 
 
-Route::post('register', [AuthController::class, 'register']);
-Route::post('login', [AuthController::class, 'login']);
-
+Route::middleware('guest')->group(function () {
+    // Auth
+    Route::post('register', [AuthController::class, 'register']);
+    Route::post('login', [AuthController::class, 'login']);
+    Route::post('forgot-password', [AuthController::class, 'forgotPassword'])->name('password.forgot');
+    Route::post('reset-password', [AuthController::class, 'resetPassword'])->name('password.reset');
+});
 
 Route::middleware('auth:sanctum')->group(function () {
     // Auth
