@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\UserRequest;
+use App\Http\Requests\Api\AuthRequest;
 use App\Models\User;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Password;
 
 class AuthController extends Controller
 {
-    public function register(UserRequest $request)
+    public function register(AuthRequest $request)
     {
         $user = User::create($request->validated());
 
@@ -26,7 +26,7 @@ class AuthController extends Controller
         ], Response::HTTP_OK);
     }
 
-    public function login(UserRequest $request)
+    public function login(AuthRequest $request)
     {
         if (!Auth::attempt($request->only(['phone', 'password']))) {
             return response()->json([
@@ -35,7 +35,7 @@ class AuthController extends Controller
             ], Response::HTTP_UNAUTHORIZED);
         }
 
-        $user = User::where('phone', $request->phone)->first();
+        $user = auth()->user();
 
         return response()->json([
             'user' => $user,
