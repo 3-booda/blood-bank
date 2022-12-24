@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\Auth\AuthController;
 use App\Http\Controllers\Api\PostController;
+use App\Http\Controllers\Api\ProfileController;
 use App\Mail\ResetPassword;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
@@ -22,9 +23,15 @@ Route::middleware('guest')->group(function () {
     Route::post('reset-password', [AuthController::class, 'resetPassword'])->name('password.reset');
 });
 
+
 Route::middleware('auth:sanctum')->group(function () {
     // Auth
     Route::post('logout', [AuthController::class, 'logout']);
+
+
+    Route::get('profile/{user}', [ProfileController::class, 'show']);
+    Route::patch('profile/{user}', [ProfileController::class, 'update']);
+
 
     // Posts
     Route::get('posts', [PostController::class, 'index']);
