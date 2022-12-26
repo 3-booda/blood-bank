@@ -9,14 +9,13 @@ class DonationRequest extends Model
     protected $table = 'donation_requests';
     protected $fillable = [
         'city_id',
+        'blood_type_id',
         'patient_name',
         'patient_phone',
         'patient_age',
         'bag_nums',
         'hospita_address',
-        'longtitude',
-        'latitude',
-        'details'
+        'notes'
     ];
     public $timestamps = true;
 

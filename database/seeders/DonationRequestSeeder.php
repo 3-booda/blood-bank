@@ -21,14 +21,13 @@ class DonationRequestSeeder extends Seeder
         for ($i=0; $i < 100; $i++) {
             array_push($donationRequest, [
                 'city_id' => rand(1, 100),
+                'blood_type_id' => rand(1, 8),
                 'patient_name' => $fake->name(),
                 'patient_phone' => $fake->phoneNumber(),
                 'patient_age' => rand(1, 100),
                 'bag_nums' => rand(1, 10),
                 'hospita_address' => $fake->address(),
-                'longtitude' => $fake->longitude(),
-                'latitude' => $fake->latitude(),
-                'details' => $fake->text()
+                'notes' => $fake->text()
             ]);
         }
 

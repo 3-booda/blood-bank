@@ -10,14 +10,13 @@ class CreateDonationRequestsTable extends Migration {
 		Schema::create('donation_requests', function(Blueprint $table) {
 			$table->bigIncrements('id');
 			$table->bigInteger('city_id')->unsigned();
+			$table->bigInteger('blood_type_id')->unsigned();
 			$table->string('patient_name', 50);
 			$table->string('patient_phone', 20);
 			$table->tinyInteger('patient_age');
-			$table->tinyInteger('bag_nums')->default('10');
+			$table->tinyInteger('bag_nums');
 			$table->string('hospita_address');
-			$table->decimal('longtitude', 10,2);
-			$table->decimal('latitude', 10,2);
-			$table->text('details');
+			$table->text('notes')->nullable();
 			$table->timestamps();
 		});
 	}

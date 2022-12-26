@@ -38,6 +38,11 @@ class CreateForeignKeys extends Migration {
 						->onDelete('cascade')
 						->onUpdate('cascade');
 		});
+        Schema::table('donation_requests', function(Blueprint $table) {
+            $table->foreign('blood_type_id')->references('id')->on('blood_types')
+                        ->onDelete('cascade')
+                        ->onUpdate('cascade');
+		});
 		Schema::table('userables', function(Blueprint $table) {
 			$table->foreign('user_id')->references('id')->on('users')
 						->onDelete('cascade')
