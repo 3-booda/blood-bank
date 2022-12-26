@@ -23,7 +23,11 @@ class DonationRequest extends Model
     // Relations
     public function city()
     {
-        return $this->belongsTo('App\Models\City', 'city_id');
+        return $this->belongsTo(City::class, 'city_id');
     }
 
+    public function bloodType()
+    {
+        return $this->belongsTo(BloodType::class, 'blood_type_id');
+    }
 }

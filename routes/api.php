@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\Auth\AuthController;
 use App\Http\Controllers\Api\DonationRequestController;
+use App\Http\Controllers\Api\NotificationController;
 use App\Http\Controllers\Api\PostController;
 use App\Http\Controllers\Api\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -25,6 +26,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('logout', [AuthController::class, 'logout']);
 
 
+    // Profile
     Route::get('profile/{user}', [ProfileController::class, 'show']);
     Route::patch('profile/{user}', [ProfileController::class, 'update']);
 
@@ -36,6 +38,10 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('toggle-favorite-post', [PostController::class, 'toggleFavoritePosts']);
 
 
-    // Donation Request
+    // Donation request
     Route::post('donation-request', DonationRequestController::class);
+
+
+    // Notifications
+    Route::get('notifications', NotificationController::class);
 });
