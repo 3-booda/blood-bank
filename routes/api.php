@@ -7,11 +7,6 @@ use App\Http\Controllers\Api\PostController;
 use App\Http\Controllers\Api\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-
-// constant
-define('PAGINATE', 10);
-
-
 Route::middleware('guest')->group(function () {
     // Auth
     Route::post('register', [AuthController::class, 'register']);
@@ -39,7 +34,9 @@ Route::middleware('auth:sanctum')->group(function () {
 
 
     // Donation request
-    Route::post('donation-request', DonationRequestController::class);
+    Route::get('donation-requests', [DonationRequestController::class, 'index']);
+    Route::get('donation-requests/{donation_request}', [DonationRequestController::class, 'show']);
+    Route::post('donation-requests', [DonationRequestController::class, 'store']);
 
 
     // Notifications
