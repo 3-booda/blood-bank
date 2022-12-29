@@ -51,7 +51,7 @@ Route::middleware('guest')->group(function () {
 
 
     // Contact us
-    Route::get('contact-us', ContactUsController::class);
+    // Route::get('contact-us', [ContactUsController::class, 'index']);
 });
 
 
@@ -78,4 +78,8 @@ Route::middleware('auth:sanctum')->group(function () {
 
     // Notifications
     Route::get('notifications', NotificationController::class);
+
+
+    // Contact us
+    Route::post('contact-us', [ContactUsController::class, 'store']);
 });

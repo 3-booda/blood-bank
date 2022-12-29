@@ -20,11 +20,9 @@ class ContactSeeder extends Seeder
         $fake = fake();
         $contacts = [];
 
-        for ($i=0; $i < 100; $i++) {
+        for ($i=0; $i < 10; $i++) {
             array_push($contacts, [
-                'name' => $fake->name(),
-                'email' => $fake->email(),
-                'phone' => $fake->phoneNumber(),
+                'user_id' => $fake->numberBetween(1, 10),
                 'subject' => 'Inquiry',
                 'message' => $fake->text()
             ]);
