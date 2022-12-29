@@ -14,6 +14,7 @@ class DonationRequestController extends Controller
         $donationRequests = \App\Models\DonationRequest::query()
             ->select(['patient_name', 'hospita_address', 'city_id'])
             ->with('city:id,name')
+            ->latest()
             ->paginate(PAGINATE);
 
         return response()->json([
