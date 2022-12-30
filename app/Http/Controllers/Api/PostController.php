@@ -9,9 +9,11 @@ use Illuminate\Http\Response;
 
 class PostController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $posts = Post::paginate(PAGINATE);
+        $posts = Post::when($request->category_id, function ($query) use ($request) {
+            $query->where('category_id', $request->category_id);
+        })->inRandomOrder()->paginate(PAGINATE);
 
         return response()->json([
             'data' => $posts

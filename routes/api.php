@@ -51,7 +51,7 @@ Route::middleware('guest')->group(function () {
 
 
     // Contact us
-    // Route::get('contact-us', [ContactUsController::class, 'index']);
+    Route::get('contact-us', [ContactUsController::class, 'index']);
 });
 
 
