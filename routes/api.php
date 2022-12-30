@@ -7,10 +7,12 @@ use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\CityController;
 use App\Http\Controllers\Api\ContactUsController;
 use App\Http\Controllers\Api\DonationRequestController;
-use App\Http\Controllers\Api\NotificationController;
+use App\Http\Controllers\Api\Notifications\NotificationController;
+use App\Http\Controllers\Api\Notifications\NotificationSettingController;
 use App\Http\Controllers\Api\PostController;
 use App\Http\Controllers\Api\ProfileController;
 use App\Http\Controllers\Api\ProvinceController;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 
@@ -76,8 +78,14 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('donation-requests', [DonationRequestController::class, 'store']);
 
 
+    // Notifications setting
+    Route::get('notifications-setting', [NotificationSettingController::class, 'index']);
+    Route::post('notifications-setting', [NotificationSettingController::class, 'store']);
+
+
     // Notifications
     Route::get('notifications', NotificationController::class);
+
 
 
     // Contact us
