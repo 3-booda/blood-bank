@@ -12,6 +12,7 @@ use App\Http\Controllers\Api\Notifications\NotificationSettingController;
 use App\Http\Controllers\Api\PostController;
 use App\Http\Controllers\Api\ProfileController;
 use App\Http\Controllers\Api\ProvinceController;
+use App\Http\Controllers\Api\SettingController;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
@@ -47,14 +48,6 @@ Route::middleware('guest')->group(function () {
     // Posts
     Route::get('posts', [PostController::class, 'index']);
     Route::get('posts/{post}', [PostController::class, 'show']);
-
-
-    // About app
-    Route::get('about-app', AboutAppController::class);
-
-
-    // Contact us
-    Route::get('contact-us', [ContactUsController::class, 'index']);
 });
 
 
@@ -87,6 +80,9 @@ Route::middleware('auth:sanctum')->group(function () {
     // Notifications
     Route::get('notifications', NotificationController::class);
 
+
+    // Settings
+    Route::get('settings', SettingController::class);
 
     // Contact us
     Route::post('contact-us', [ContactUsController::class, 'store']);

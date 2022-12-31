@@ -10,15 +10,6 @@ use Illuminate\Http\Response;
 
 class ContactUsController extends Controller
 {
-    public function index()
-    {
-        $contactUs = Setting::whereIn('key', ['email', 'phone',])
-            ->orWhere('key', 'like', '%_link')
-            ->get();
-
-        return $contactUs;
-    }
-
     public function store(Request $request)
     {
         $validated = $request->validate([
