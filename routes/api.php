@@ -13,6 +13,7 @@ use App\Http\Controllers\Api\PostController;
 use App\Http\Controllers\Api\ProfileController;
 use App\Http\Controllers\Api\ProvinceController;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 
@@ -85,7 +86,6 @@ Route::middleware('auth:sanctum')->group(function () {
 
     // Notifications
     Route::get('notifications', NotificationController::class);
-
 
 
     // Contact us
