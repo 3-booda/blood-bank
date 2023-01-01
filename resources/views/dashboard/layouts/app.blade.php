@@ -27,9 +27,9 @@
   </div>
 
   <!-- jQuery -->
-  <script src="{{ asset('dashboard/js/jquery/jquery.min.js') }}"></script>
+  <script src="{{ asset('js/jquery/jquery.min.js') }}"></script>
   <!-- Bootstrap 4 -->
-  <script src="{{ asset('dashboard/js/bootstrap/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ asset('js/bootstrap/bootstrap.bundle.min.js') }}"></script>
   <!-- AdminLTE App -->
   <script src="{{ asset('dashboard/js/adminlte.min.js') }}"></script>
 </body>
