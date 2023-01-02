@@ -3,6 +3,10 @@
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('login', function () {
-    return view('dashboard.auth.login');
+Route::get('test', function () {
+    return Auth()->user();
+});
+
+Route::get('home', function () {
+    return view('dashboard.home');
 });

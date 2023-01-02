@@ -1,3 +1,8 @@
+{{-- <div class="wrapper">
+  <div class="preloader flex-column justify-content-center align-items-center" style="height: 0px;">
+    <img class="animation__shake" src="{{ asset('dashboard/img/AdminLTELogo.png') }}" alt="AdminLTELogo" style="display: none;" width="60" height="60">
+  </div>
+</div> --}}
 <div class="content-wrapper">
 
   <div class="content-header">
