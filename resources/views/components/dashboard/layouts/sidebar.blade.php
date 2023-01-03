@@ -11,7 +11,11 @@
         <img src="{{ asset('dashboard/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
       </div>
       <div class="info">
-        <a href="#" class="d-block">Alexander Pierce</a>
+        @auth('admin')
+          <a href="#" class="d-block">
+            {{ auth('admin')->user()->name }}
+          </a>
+        @endauth
       </div>
     </div>
 

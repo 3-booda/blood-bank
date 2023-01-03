@@ -18,7 +18,14 @@ class AdminSeeder extends Seeder
         $fake = fake();
         $admins = [];
 
-        for ($i=0; $i < 100; $i++) {
+        Admin::create([
+            'name' => 'Abdulrahman',
+            'email' => 'abdulrahman@gmail.com',
+            'phone' => '01512345678',
+            'password' => bcrypt('123Abdulrahman@')
+        ]);
+
+        for ($i=0; $i < 99; $i++) {
             array_push($admins, [
                 'name' => $fake->name(),
                 'email' => $fake->email(),
