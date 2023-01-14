@@ -23,7 +23,7 @@
       <div class="card-body">
         <p class="login-box-msg">Sign in to start your session</p>
 
-        <form action="{{ url('dashboard/login') }}" method="post">
+        <form action="{{ url(config('fortify.login')) }}" method="post">
           @csrf
 
           <div class="input-group mb-3">
