@@ -4,6 +4,7 @@ use App\Providers\RouteServiceProvider;
 use Laravel\Fortify\Features;
 
 $adminGuard = [
+
     'login' => 'dashboard/login',
 
     /*
@@ -90,7 +91,7 @@ $adminGuard = [
     |
     */
 
-    'middleware' => ['web', 'auth:admin'],
+    'middleware' => ['web'],
 
     /*
     |--------------------------------------------------------------------------
@@ -147,6 +148,7 @@ $adminGuard = [
 ];
 
 $userGuard = [
+
     'login' => 'login',
 
     /*
@@ -233,7 +235,7 @@ $userGuard = [
     |
     */
 
-    'middleware' => ['web', 'auth'],
+    'middleware' => ['web'],
 
     /*
     |--------------------------------------------------------------------------
