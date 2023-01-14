@@ -1,3 +1,3 @@
-<x-dashboard.layouts title="Home">
+<x-dashboard.layouts title="Home" header="Home">
 
 </x-dashboard.layouts>

@@ -9,6 +9,12 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="{{ asset('css/fonts/fontawesome/all.min.css') }}">
+
+  {{ $css ?? '' }}
+
+  <!-- Bootstrap -->
+  {{-- <link rel="stylesheet" href="{{ asset('css/bootstrap/bootstrap.min.css') }}"> --}}
+
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('dashboard/css/adminlte.min.css') }}">
 </head>
@@ -19,7 +25,7 @@
 
     <x-dashboard.layouts.sidebar></x-dashboard.layouts.sidebar>
 
-    <x-dashboard.layouts.main>
+    <x-dashboard.layouts.main :header="$header">
       {{ $slot }}
     </x-dashboard.layouts.main>
 
@@ -28,8 +34,17 @@
 
   <!-- jQuery -->
   <script src="{{ asset('js/jquery/jquery.min.js') }}"></script>
+
   <!-- Bootstrap 4 -->
   <script src="{{ asset('js/bootstrap/bootstrap.bundle.min.js') }}"></script>
+
+  {{ $scripts ?? '' }}
+  <script>
+    $("img").on("error", function () {
+      $(this).attr("src", "/img/not-found.png");
+    });
+  </script>
+
   <!-- AdminLTE App -->
   <script src="{{ asset('dashboard/js/adminlte.min.js') }}"></script>
 </body>

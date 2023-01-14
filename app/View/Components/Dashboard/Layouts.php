@@ -7,9 +7,12 @@ use Illuminate\View\Component;
 class Layouts extends Component
 {
     public $title;
-    public function __construct($title)
+    public $header;
+
+    public function __construct($title, $header)
     {
         $this->title = $title;
+        $this->header = $header;
     }
 
     /**
